@@ -18,6 +18,7 @@ rem set /p toolsdir=Please specify the tools directory (contains aapt.exe and 7z
 set toolsdir="%~dp0\autodroidtale_tools"
 rem set /p %wrapperfile%=Finally, the wrapper file: 
 set wrapperfile="%toolsdir%\UndertaleStub.apk"
+set /p outputapk=Output as: 
 
 cls
 
@@ -46,7 +47,7 @@ rem pause
 cls
 
 cmd /c %toolsdir%\apksigner sign -ks "%toolsdir%\keystore.jks" --ks-pass pass:123456 --key-pass pass:123456 %tmprunner%
-move %tmprunner% %cd%\Droidtale.apk
+move %tmprunner% %outputapk%
 
 rem pause
 cls
