@@ -1,5 +1,7 @@
 @echo off
 
+mode 120,30
+
 color 2f
 
 title AutoDroidtale
@@ -41,16 +43,20 @@ rd /s /q %temp%\assets
 rem pause
 cls
 
-forfiles /m *.txt /p %assetsdir% /c "cmd /c %toolsdir%\aapt add -f -v %tmprunner% @file"
-forfiles /m *.ogg /p %assetsdir% /c "cmd /c %toolsdir%\aapt add -f -v %tmprunner% @file"
+mkdir %temp%\assets
+cd /d %temp%
+forfiles /m *.txt /p %assetsdir% /c "cmd /c copy @file %temp%\assets"
+forfiles /m *.ogg /p %assetsdir% /c "cmd /c copy @file %temp%\assets"
+cls
+forfiles /m *.* /p assets\ /c "cmd /c cd .. && %toolsdir%\aapt add -f -v %tmprunner% assets/@file"
+cd /d %tcd%
+rd /s /q %temp%\assets
 rem pause
 cls
 
-cmd /c %toolsdir%\apksigner sign -ks "%toolsdir%\keystore.jks" --ks-pass pass:123456 --key-pass pass:123456 %tmprunner%
+set java_exe=
+java -jar %toolsdir%\lib\apksigner.jar sign -ks "%toolsdir%\keystore.jks" --ks-pass pass:123456 --key-pass pass:123456 %tmprunner%
 move %tmprunner% %outputapk%
-
-rem pause
-cls
 
 title AutoDroidtale
 echo Done
