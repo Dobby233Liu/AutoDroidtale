@@ -54,7 +54,6 @@ rd /s /q %temp%\assets
 rem pause
 cls
 
-set java_exe=
 java -jar %toolsdir%\lib\apksigner.jar sign -ks "%toolsdir%\keystore.jks" --ks-pass pass:123456 --key-pass pass:123456 %tmprunner%
 move %tmprunner% %outputapk%
 
