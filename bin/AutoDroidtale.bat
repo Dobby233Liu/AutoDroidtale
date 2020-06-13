@@ -8,7 +8,7 @@ title AutoDroidtale
 
 echo AutoDroidtale - another Batch Droidtale builder by LWYS
 echo Requires JRE 8+
-echo Thanks for: MrPowerGamerBR https://mrpowergamerbr.com/droidtale
+echo Special thanks: MrPowerGamerBR https://mrpowergamerbr.com/droidtale
 echo and the Android Open Source Project https://source.android.com
 
 pause
@@ -18,7 +18,7 @@ set /p assetsdir=Please specify the assets directory (contains music and credits
 set /p datafile=Please specify the data.win file (will be renamed into game.droid): 
 rem set /p toolsdir=Please specify the tools directory (contains aapt.exe and 7z.exe): 
 set toolsdir="%~dp0\autodroidtale_tools"
-rem set /p %wrapperfile%=Finally, the wrapper file: 
+rem set /p %wrapperfile%=Finally, please specify the wrapper file: 
 set wrapperfile="%toolsdir%\UndertaleStub.apk"
 set /p outputapk=Output as: 
 
